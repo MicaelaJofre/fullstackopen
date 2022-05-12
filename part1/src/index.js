@@ -9,7 +9,14 @@ import { History } from "./History";
 
 
 
-
+const Statistics = ({all, good, bad}) => {
+  return (
+    <div>
+      <p>average: {!all ? 0 : good / all - bad / all}</p>
+      <p>positive: {!all ? 0 : (good/all)*100} %</p>
+    </div>
+  )
+}
 
 const App = () => {
 
@@ -70,8 +77,7 @@ const App = () => {
         <History prop={neutral} text='neutral' />
         <History prop={bad} text='bad' />
         <History prop={all} text='all' />
-        <p>average: {!all ? 0 : good / all - bad / all}</p>
-        <p>positive: {!all ? 0 : (good/all)*100} %</p>
+        <Statistics all={all} good={good} bad={ bad}/>
       </div>
     </div>
   )
