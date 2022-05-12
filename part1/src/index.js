@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from './Button';
 import { Content } from './Content';
-import { Display } from './Display ';
 import { Header } from './Header';
 import { Total } from './Total';
-import { History } from "./History";
+import { Statistics } from './Statistics';
 
 
-
-const Statistics = ({ all, good, bad }) => {
-  if (all === 0) {
-    return (
-      <div>No feedback given</div>
-    )
-  }
-  return (
-    <div>
-      <p>average: {!all ? 0 : good / all - bad / all}</p>
-      <p>positive: {!all ? 0 : (good/all)*100} %</p>
-    </div>
-  )
-}
 
 const App = () => {
 
@@ -78,11 +63,7 @@ const App = () => {
         <Button onClick={handleNeutral} text='neutral' />
         <Button onClick={handleBad} text='bad' />
         <h2>statistics</h2>
-        <History prop={good} text='good' />
-        <History prop={neutral} text='neutral' />
-        <History prop={bad} text='bad' />
-        <History prop={all} text='all' />
-        <Statistics all={all} good={good} bad={ bad}/>
+        <Statistics all={all} good={good} bad={bad} neutral={ neutral}/>
       </div>
     </div>
   )
