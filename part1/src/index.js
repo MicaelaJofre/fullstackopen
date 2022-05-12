@@ -9,7 +9,12 @@ import { History } from "./History";
 
 
 
-const Statistics = ({all, good, bad}) => {
+const Statistics = ({ all, good, bad }) => {
+  if (all === 0) {
+    return (
+      <div>No feedback given</div>
+    )
+  }
   return (
     <div>
       <p>average: {!all ? 0 : good / all - bad / all}</p>
