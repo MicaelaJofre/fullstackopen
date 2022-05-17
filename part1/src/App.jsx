@@ -66,11 +66,17 @@ const App = () => {
     }
     //crea un array con ceros
     const [points, setPoints] = useState(new Array(6).fill(0))
+    //mayor cantidad de votos
+    const [mostVotes, setMostVotes] = useState([])
+    
+    const copy = [...points]
     
     const handlePoints = () => {
-        const copy = [ ...points ]
         copy[selected] += 1
-        setPoints([ ...copy ])
+        setPoints([...copy])
+        let m = Math.max(...copy);
+        copy[selected] === m && setMostVotes([[selected],m])
+                
     }
     return (
         <div>
@@ -98,8 +104,20 @@ const App = () => {
                 <p>has {points[selected]} votes</p>
                 <Button onClick={handlePoints} text='vote'/>
                 <Button onClick={handleAnecdotes} text='next anecdotes ' />
+
+                {mostVotes.length !== 0
+                ? <>
+                    <h1>Anecdotes with most votes</h1>
+                    <p>{anecdotes[mostVotes[0]]}</p>
+                    <p>has {mostVotes[1]} votes</p>
+                    </>
+                : <></>    
+                }
             </div>
+
+
         </div>
+
     )
 };
 export { App }
