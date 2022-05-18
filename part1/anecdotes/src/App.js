@@ -1,53 +1,10 @@
 import React, { useState } from 'react';
 import { Button } from './Button';
-import { Content } from './Content';
-import { Header } from './Header';
-import { Total } from './Total';
-import { Statistics } from './Statistics';
-import './index.css';
 
 
 
 const App = () => {
-    /*1*/
-    const course = {
-        name: 'Half Stack application development',
-        parts: [
-            {
-                name: 'Fundamentals of React',
-                exercises: 10
-            },
-            {
-                name: 'Using props to pass data',
-                exercises: 7
-            },
-            {
-                name: 'State of a component',
-                exercises: 14
-            }
-        ]
-    }
-
-    /*1.6*/
-    const [good, setGood] = useState(0)
-    const [neutral, setNeutral] = useState(0)
-    const [bad, setBad] = useState(0)
-    const [all, setAll] = useState(0)
-
-    const handleGood = () => {
-        setGood(good + 1);
-        setAll(all + 1)
-    }
-    const handleNeutral = () => {
-        setNeutral(neutral + 1);
-        setAll(all + 1)
-    }
-    const handleBad = () => {
-        setBad(bad + 1);
-        setAll(all + 1)
-    }
-
-    /*1.12*/
+    
     const [selected, setSelected] = useState(0)
     const anecdotes = [
         'If it hurts, do it more often',
@@ -80,30 +37,11 @@ const App = () => {
     }
     return (
         <div>
-            <Header course={course.name} />
-
-            <Content parts={course.parts} />
-
-            <Total parts={course.parts} />
-
-
-            <div>
-                <h1>Comments</h1>
-                <h2>give feedback</h2>
-                <Button onClick={handleGood} text='good' />
-                <Button onClick={handleNeutral} text='neutral' />
-                <Button onClick={handleBad} text='bad' />
-                <h2>statistics</h2>
-                <Statistics all={all} good={good} bad={bad} neutral={neutral} />
-            </div>
-
-
-            <div className='anecdotes'>
-                <h1>Anecdotes</h1>
+            <h1>Anecdotes</h1>
                 <p>{anecdotes[selected]}</p>
                 <p>has {points[selected]} votes</p>
                 <Button onClick={handlePoints} text='vote'/>
-                <Button onClick={handleAnecdotes} text='next anecdotes ' />
+                <Button onClick={handleAnecdotes} text='next anecdote'/>
 
                 {mostVotes.length !== 0
                 ? <>
@@ -113,8 +51,6 @@ const App = () => {
                     </>
                 : <></>    
                 }
-            </div>
-
 
         </div>
 
