@@ -17,7 +17,6 @@ const Filter = ({persons}) => {
     }
     
     
-    console.log(person);
     return (
         <>
             <div>
@@ -37,18 +36,3 @@ const Filter = ({persons}) => {
 }
 
 export { Filter }
-
-/* let people = []
-persons.forEach(person => {
-
-
-    if (person.name.toLowerCase().includes(e.target.value.toLowerCase())) {
-        people = { ...people, name: person.name }
-
-        console.log(people.name);
-
-        setSearch(search.concat(...search, { name: people.name }))
-    }
-
-});
-console.log(search); */
