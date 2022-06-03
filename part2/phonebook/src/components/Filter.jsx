@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 
 const Filter = ({persons}) => {
 
-    const [person, setPerson] = useState([])
+    const [filter, setFilter] = useState([])
 
     const handleSearch = (e) => {
 
-        setPerson([])
+        setFilter([])
         let search = e.target.value
         let res = []
 
         if (search !== '') res = persons.filter(person => person.name.toLowerCase().includes(search.toLowerCase()) && person)
 
-        setPerson(res)
+        setFilter(res)
         
     }
     
@@ -28,7 +28,7 @@ const Filter = ({persons}) => {
             </div>
             <div>
                 {
-                    person.map((p, index) => <p key={index}>{p.name} </p>)
+                    filter.map((p, index) => <p key={index}>{p.name} </p>)
                 }
             </div>
         </>

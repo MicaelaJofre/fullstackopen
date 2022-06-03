@@ -14,21 +14,16 @@ const PersonsForm = ({ persons, setPersons}) => {
             phone
         }
         
-        for (let i = 0; i < persons.length; i++) {
-
-            if (newPerson.name.toUpperCase() === persons[i].name.toUpperCase()) {
-
-                alert(`${persons[i].name} is already added to phonebook`)
-                setNewName('')
-                setPersons([...persons])
-
-            } else {
-                
-                setPersons(persons.concat(newPerson))
-                setNewName('')
-                setPhone('')
-            }
-        }
+        let exist = false
+        
+        persons.forEach(person => person.name.toLowerCase() === newPerson.name.toLowerCase() && (exist=true) );
+        exist
+            ? alert(`${newPerson.name} is already added to phonebook`)
+            : setPersons(persons.concat(newPerson))
+        
+        setNewName('')
+        setPhone('')
+        
     }
 
     const handlePhone = (e) => {
