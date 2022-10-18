@@ -5,7 +5,8 @@ import { Persons } from './components/Persons'
 import { PersonsForm } from './components/PersonsForm'
 
 const App = () => {
-  const [ notes, setNotes ] = useState() 
+  const [notes, setNotes] = useState() 
+  const [newNote, setNewNote] = useState()
 
   useEffect(() => {
     
@@ -14,8 +15,12 @@ const App = () => {
       .then(response => {
         setNotes(response.data)
       })
-
+      .catch(function (error) {
+        console.log('Error', error.message);
+      })
+    
   }, [])
+
   
 
   return (
