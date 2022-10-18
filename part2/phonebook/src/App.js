@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import dataService from './services/callApi'
 import { Filter } from './components/Filter'
 import { Persons } from './components/Persons'
 import { PersonsForm } from './components/PersonsForm'
 
 const App = () => {
   const [notes, setNotes] = useState() 
-  const [newNote, setNewNote] = useState()
 
   useEffect(() => {
-    
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        setNotes(response.data)
-      })
-      .catch(function (error) {
-        console.log('Error', error.message);
-      })
-    
+    dataService
+      .getAll()
+      .then(response => setNotes(response))
+      .catch(error => console.log('Error', error.message))
   }, [])
 
   

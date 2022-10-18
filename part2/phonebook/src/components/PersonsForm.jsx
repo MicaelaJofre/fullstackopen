@@ -1,11 +1,11 @@
-import axios from 'axios'
 import React, { useState } from 'react'
+import dataService from '../services/callApi'
 
 const PersonsForm = ({ persons, setPersons}) => {
     
     const [newName, setNewName] = useState('')
     const [phone, setPhone] = useState('')
-
+    
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -16,22 +16,18 @@ const PersonsForm = ({ persons, setPersons}) => {
         }
         
         let exist = false
-        
+
         persons.forEach(person =>person.name.toLowerCase() === personsObject.name.toLowerCase() && (exist = true));
         exist
             ? alert(`${personsObject.name} is already added to phonebook`)
-            : axios
-                .post('http://localhost:3001/persons', personsObject)
-                .then(response => {
-                    setPersons(persons.concat(response.data))
-                })
+            : dataService
+                .create(personsObject)
+                .then(response => setPersons(persons.concat(response)))
+                .catch(error => console.log('Error', error.message))
             
         
         setNewName('')
         setPhone('')
-
-        
-        
     }
 
     const handlePhone = (e) => {
