@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import axios from 'axios'
-import { Filter } from "./components/Filter";
+import { Filter } from "./components/Filter"
 
 function App() {
 
