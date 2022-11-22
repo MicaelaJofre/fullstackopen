@@ -4,7 +4,7 @@ import dataService from '../services/callApi'
 const PersonsForm = ({ persons, setPersons, setMessageNotification }) => {
 
     const [newName, setNewName] = useState('')
-    const [phone, setPhone] = useState('')
+    const [number, setNumber] = useState('')
 
 
     const handleSubmit = (e) => {
@@ -12,7 +12,7 @@ const PersonsForm = ({ persons, setPersons, setMessageNotification }) => {
 
         const personsObject = {
             name: newName,
-            phone
+            number
         }
 
         let id = 0;
@@ -49,11 +49,11 @@ const PersonsForm = ({ persons, setPersons, setMessageNotification }) => {
 
 
         setNewName('')
-        setPhone('')
+        setNumber('')
     }
 
     const handlePhone = (e) => {
-        setPhone(e.target.value)
+        setNumber(e.target.value)
     }
 
     const handleNewName = (e) => {
@@ -72,7 +72,7 @@ const PersonsForm = ({ persons, setPersons, setMessageNotification }) => {
             <div>
                 <label>Phone:</label>
                 <input
-                    value={phone}
+                    value={number}
                     onChange={handlePhone}
                 />
             </div>
